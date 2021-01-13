@@ -2,6 +2,7 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import Text from "./Text";
 import Subheading from "./Subheading";
+import Stack from "./Stack";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
@@ -27,9 +28,6 @@ const styles = StyleSheet.create({
     padding: 4,
     borderRadius: 4,
   },
-  padded: {
-    paddingVertical: 4,
-  },
   stats: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -45,20 +43,10 @@ const styles = StyleSheet.create({
 const formatBigNumber = (number) =>
   number >= 1000 ? `${(number / 1000).toFixed(1)}k` : `${number}`;
 
-const Stack = ({ children }) => {
-  return (
-    <View style={styles.wrap}>
-      {React.Children.map(children, (child) => (
-        <View style={styles.padded}>{child}</View>
-      ))}
-    </View>
-  );
-};
-
 const Media = (props) => (
   <View style={styles.media}>
     <Image style={styles.avatar} source={{ uri: props.ownerAvatarUrl }} />
-    <Stack>
+    <Stack style={styles.wrap}>
       <Subheading>{props.fullName}</Subheading>
       <Text color="textSecondary">{props.description}</Text>
       <View style={styles.pill}>

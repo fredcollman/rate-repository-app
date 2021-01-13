@@ -1,28 +1,48 @@
 import React from "react";
 import { Formik } from "formik";
-import { TouchableWithoutFeedback, View } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import Text from "./Text";
+import Stack from "./Stack";
 import FormikTextInput from "./FormikTextInput";
+import theme from "../theme";
 
-const BodyMassIndexForm = ({ onSubmit }) => {
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    maxWidth: 400,
+    backgroundColor: theme.backgrounds.light,
+  },
+  button: {
+    backgroundColor: theme.backgrounds.primary,
+    padding: 12,
+    borderRadius: 4,
+    alignItems: "center",
+  },
+});
+
+const SignInForm = ({ onSubmit }) => {
   return (
-    <View>
-      <FormikTextInput name="mass" placeholder="Weight (kg)" />
-      <FormikTextInput name="height" placeholder="Height (m)" />
-      <TouchableWithoutFeedback onPress={onSubmit}>
-        <Text>Calculate</Text>
-      </TouchableWithoutFeedback>
-    </View>
+    <Stack style={styles.container}>
+      <FormikTextInput name="username" placeholder="Username" />
+      <FormikTextInput secureTextEntry name="password" placeholder="Password" />
+      <View style={styles.button}>
+        <TouchableWithoutFeedback onPress={onSubmit}>
+          <Text color="textReverse" fontWeight="bold">
+            Sign in
+          </Text>
+        </TouchableWithoutFeedback>
+      </View>
+    </Stack>
   );
 };
 
 const SignIn = () => {
   return (
     <Formik
-      initialValues={{ mass: "", height: "" }}
+      initialValues={{ username: "", password: "" }}
       onSubmit={(values) => console.log(values)}
     >
-      {({ handleSubmit }) => <BodyMassIndexForm onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   );
 };
