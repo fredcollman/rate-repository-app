@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 const darkGrey = "#24292e";
 const midGrey = "#586069";
 const lightGrey = "#e1e4e8";
@@ -24,7 +26,11 @@ const theme = {
     subheading: 16,
   },
   fonts: {
-    main: "System",
+    main: Platform.select({
+      android: "Roboto",
+      ios: "Arial",
+      default: "sans-serif",
+    }),
   },
   fontWeights: {
     normal: "400",
