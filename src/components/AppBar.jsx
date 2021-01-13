@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Link } from "react-router-native";
 import Constants from "expo-constants";
 import Subheading from "./Subheading";
@@ -32,8 +32,10 @@ const AppBarTab = ({ path, children }) => {
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab path="/">Repositories</AppBarTab>
-      <AppBarTab path="/login">Sign in</AppBarTab>
+      <ScrollView horizontal>
+        <AppBarTab path="/">Repositories</AppBarTab>
+        <AppBarTab path="/login">Sign in</AppBarTab>
+      </ScrollView>
     </View>
   );
 };
