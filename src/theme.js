@@ -1,15 +1,21 @@
 const darkGrey = "#24292e";
-const lightGrey = "#586069";
+const midGrey = "#586069";
+const lightGrey = "#e1e4e8";
 const blue = "#0366d6";
 const white = "#ffffff";
 
 const theme = {
   colors: {
     textPrimary: darkGrey,
-    textSecondary: lightGrey,
+    textSecondary: midGrey,
     primary: blue,
-    background: darkGrey,
     textReverse: white,
+  },
+  backgrounds: {
+    dark: darkGrey,
+    subtle: lightGrey,
+    light: white,
+    primary: blue,
   },
   fontSizes: {
     body: 14,

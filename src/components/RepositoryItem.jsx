@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     maxWidth: 400,
+    backgroundColor: theme.backgrounds.light,
   },
   avatar: {
     width: 48,
@@ -17,11 +18,12 @@ const styles = StyleSheet.create({
   },
   media: {
     flexDirection: "row",
-    maxWidth: 400,
+    flex: 1,
+    width: "100%",
   },
   pill: {
-    backgroundColor: theme.colors.primary,
-    alignSelf: "start",
+    backgroundColor: theme.backgrounds.primary,
+    alignSelf: "flex-start",
     padding: 4,
     borderRadius: 4,
   },
@@ -35,6 +37,9 @@ const styles = StyleSheet.create({
   centerText: {
     textAlign: "center",
   },
+  wrap: {
+    flex: 1,
+  },
 });
 
 const formatBigNumber = (number) =>
@@ -42,7 +47,7 @@ const formatBigNumber = (number) =>
 
 const Stack = ({ children }) => {
   return (
-    <View>
+    <View style={styles.wrap}>
       {React.Children.map(children, (child) => (
         <View style={styles.padded}>{child}</View>
       ))}
