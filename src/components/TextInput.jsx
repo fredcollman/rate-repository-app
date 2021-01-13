@@ -10,10 +10,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: theme.backgrounds.subtle,
   },
+  error: {
+    borderColor: theme.colors.error,
+  },
 });
 
 const TextInput = ({ style, error, ...props }) => {
-  const textInputStyle = [styles.input, style];
+  const textInputStyle = [styles.input, error && styles.error, style];
 
   return <NativeTextInput style={textInputStyle} {...props} />;
 };

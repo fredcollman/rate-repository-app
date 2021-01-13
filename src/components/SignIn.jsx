@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import * as yup from "yup";
 import Text from "./Text";
 import Stack from "./Stack";
 import FormikTextInput from "./FormikTextInput";
@@ -20,18 +21,26 @@ const styles = StyleSheet.create({
   },
 });
 
+const validationSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(6, "Password must be at least ${min} characters"),
+});
+
 const SignInForm = ({ onSubmit }) => {
   return (
     <Stack style={styles.container}>
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput secureTextEntry name="password" placeholder="Password" />
-      <View style={styles.button}>
-        <TouchableWithoutFeedback onPress={onSubmit}>
+      <TouchableWithoutFeedback onPress={onSubmit}>
+        <View style={styles.button}>
           <Text color="textReverse" fontWeight="bold">
             Sign in
           </Text>
-        </TouchableWithoutFeedback>
-      </View>
+        </View>
+      </TouchableWithoutFeedback>
     </Stack>
   );
 };
@@ -41,6 +50,7 @@ const SignIn = () => {
     <Formik
       initialValues={{ username: "", password: "" }}
       onSubmit={(values) => console.log(values)}
+      validationSchema={validationSchema}
     >
       {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
