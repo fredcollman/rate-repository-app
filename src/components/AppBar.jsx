@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import Constants from "expo-constants";
-import Text from "./Text";
+import Subheading from "./Subheading";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
@@ -12,16 +12,16 @@ const styles = StyleSheet.create({
   },
   text: {
     color: theme.colors.textReverse,
-    padding: 20,
+    padding: 16,
   },
 });
 
 const AppBarTab = ({ children }) => {
   return (
     <TouchableWithoutFeedback onPress={() => console.log("touched")}>
-      <Text fontSize="subheading" fontWeight="bold" style={styles.text}>
+      <Subheading fontSize="subheading" fontWeight="bold" style={styles.text}>
         {children}
-      </Text>
+      </Subheading>
     </TouchableWithoutFeedback>
   );
 };
